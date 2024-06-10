@@ -21,11 +21,11 @@ jobs:
         timeout-minutes: 30
         runs-on: ubuntu-latest
         steps:
-            - name: Verify user
-              uses: 'deriv-com/shared-actions/.github/actions/verify_user_in_organization@v1'
+
+            - name: Harden Runner Step
+              uses: step-security/harden-runner@17d0e2bd7d51742c71671bd19fa12bdc9d40a3d6 # v2.8.1
               with:
-                  username: ${{github.event.pull_request.user.login}}
-                  token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+                  egress-policy: audit
 
             - name: Checkout to branch
               uses: actions/checkout@v4
